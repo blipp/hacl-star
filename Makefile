@@ -728,7 +728,7 @@ dist/wasm/Makefile.basic: WASMSUPPORT_BUNDLE =
 
 # Customizations for regular, msvc and gcc flavors.
 dist/gcc-compatible/Makefile.basic: DEFAULT_FLAGS += \
-  -ctypes Hacl.NaCl,EverCrypt.Curve25519,Hacl.Ed25519,EverCrypt.DRBG,Hacl.HMAC.DRBG,EverCrypt.HMAC,EverCrypt.AEAD
+  -ctypes EverCrypt.AutoConfig2,EverCrypt.StaticConfig,EverCrypt.Error,EverCrypt.Curve25519,EverCrypt.CTR,EverCrypt.HKDF,EverCrypt.HMAC,EverCrypt.Poly1305,EverCrypt.DRBG,EverCrypt.Chacha20Poly1305,EverCrypt.Hash,EverCrypt.Ed25519,EverCrypt.Cipher,EverCrypt.AEAD,Hacl.Curve25519_64,Hacl.Curve25519_64_Slow,Hacl.Chacha20Poly1305_32,Hacl.Chacha20Poly1305_128,Hacl.Chacha20Poly1305_256,Hacl.Poly1305_32,Hacl.Poly1305_128,Hacl.Poly1305_256,Hacl.Frodo.KEM,Hacl.Ed25519,Hacl.HMAC.DRBG,Hacl.Chacha20_Vec32,Hacl.Chacha20_Vec128,Hacl.Chacha20_Vec256,Hacl.SHA3,Hacl.Chacha20,Hacl.Salsa20,Hacl.HMAC,Hacl.NaCl,Hacl.HKDF,Hacl.Hash.MD5,Hacl.Hash.SHA1,MerkleTree.New.Low,MerkleTree.New.Low.Serialization
 
 dist/msvc-compatible/Makefile.basic: DEFAULT_FLAGS += -falloca -ftail-calls
 
@@ -860,7 +860,7 @@ dist/%/Makefile.basic: $(ALL_KRML_FILES) dist/LICENSE.txt \
 	  $(filter %.krml,$^) \
 	  -silent \
 	  -ccopt -Wno-unused \
-	  -warn-error @4-6 \
+	  -warn-error @4-6+22 \
 	  -fparentheses \
 	  $(notdir $(HACL_OLD_FILES)) \
 	  $(notdir $(HAND_WRITTEN_FILES)) \
